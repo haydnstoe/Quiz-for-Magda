@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intermediate British English Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 1rem;
+    }
+    p.intro {
+      background: #eef5ff;
+      border-left: 4px solid #003366;
+      padding: 10px 15px;
+      margin-bottom: 2rem;
+    }
+    .question {
+      margin-bottom: 1.25rem;
+    }
+    .question label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    select {
+      padding: 0.3rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    button {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.6rem 1.2rem;
+      background: #003366;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #002244;
+    }
+    #result {
+      text-align: center;
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      font-weight: bold;
+    }
+    .correct label {
+      color: green;
+    }
+    .incorrect label {
+      color: red;
+    }
+    .correct select, .incorrect select {
+      border: 2px solid;
+    }
+    .correct select {
+      border-color: green;
+    }
+    .incorrect select {
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Intermediate British English Quiz</h1>
+  <p class="intro">
+    Choose the correct form from each drop-down.  
+    You will practise regular & irregular past tenses, present perfect forms,  
+    and active vs passive voice. Good luck!
+  </p>
+
+  <div id="quiz">
+    <!-- 1 -->
+    <div class="question" id="q1-wrap">
+      <label for="q1">1. She ____ to the shops yesterday.</label>
+      <select id="q1">
+        <option value="">— select —</option>
+        <option value="walked">walked</option>
+        <option value="has walked">has walked</option>
+        <option value="was walked">was walked</option>
+        <option value="walk">walk</option>
+      </select>
+    </div>
+
+    <!-- 2 -->
+    <div class="question" id="q2-wrap">
+      <label for="q2">2. They ____ to the cinema last week.</label>
+      <select id="q2">
+        <option value="">— select —</option>
+        <option value="went">went</option>
+        <option value="gone">gone</option>
+        <option value="have gone">have gone</option>
+        <option value="go">go</option>
+      </select>
+    </div>
+
+    <!-- 3 -->
+    <div class="question" id="q3-wrap">
+      <label for="q3">3. I ____ (not/see) him yet.</label>
+      <select id="q3">
+        <option value="">— select —</option>
+        <option value="haven't seen">haven't seen</option>
+        <option value="didn't see">didn't see</option>
+        <option value="hadn't seen">hadn't seen</option>
+        <option value="haven't saw">haven't saw</option>
+      </select>
+    </div>
+
+    <!-- 4 -->
+    <div class="question" id="q4-wrap">
+      <label for="q4">4. He ____ his homework two hours ago.</label>
+      <select id="q4">
+        <option value="">— select —</option>
+        <option value="finished">finished</option>
+        <option value="has finished">has finished</option>
+        <option value="had finished">had finished</option>
+        <option value="finishes">finishes</option>
+      </select>
+    </div>
+
+    <!-- 5 -->
+    <div class="question" id="q5-wrap">
+      <label for="q5">5. We ____ (fly) to London last Tuesday.</label>
+      <select id="q5">
+        <option value="">— select —</option>
+        <option value="flew">flew</option>
+        <option value="flown">flown</option>
+        <option value="have flown">have flown</option>
+        <option value="flies">flies</option>
+      </select>
+    </div>
+
+    <!-- 6 -->
+    <div class="question" id="q6-wrap">
+      <label for="q6">6. She ____ Paris twice.</label>
+      <select id="q6">
+        <option value="">— select —</option>
+        <option value="has visited">has visited</option>
+        <option value="visited">visited</option>
+        <option value="have visited">have visited</option>
+        <option value="visits">visits</option>
+      </select>
+    </div>
+
+    <!-- 7 -->
+    <div class="question" id="q7-wrap">
+      <label for="q7">7. The cake ____ by my sister.</label>
+      <select id="q7">
+        <option value="">— select —</option>
+        <option value="was baked">was baked</option>
+        <option value="baked">baked</option>
+        <option value="has been baked">has been baked</option>
+        <option value="is baked">is baked</option>
+      </select>
+    </div>
+
+    <!-- 8 -->
+    <div class="question" id="q8-wrap">
+      <label for="q8">8. The chef ____ the meal on time.</label>
+      <select id="q8">
+        <option value="">— select —</option>
+        <option value="cooked">cooked</option>
+        <option value="has cooked">has cooked</option>
+        <option value="was cooked">was cooked</option>
+        <option value="had cooked">had cooked</option>
+      </select>
+    </div>
+
+    <!-- 9 -->
+    <div class="question" id="q9-wrap">
+      <label for="q9">9. The pictures ____ in 1990.</label>
+      <select id="q9">
+        <option value="">— select —</option>
+        <option value="were taken">were taken</option>
+        <option value="took">took</option>
+        <option value="have taken">have taken</option>
+        <option value="taken">taken</option>
+      </select>
+    </div>
+
+    <!-- 10 -->
+    <div class="question" id="q10-wrap">
+      <label for="q10">10. They ____ us at the station.</label>
+      <select id="q10">
+        <option value="">— select —</option>
+        <option value="met">met</option>
+        <option value="have met">have met</option>
+        <option value="meeting">meeting</option>
+        <option value="meet">meet</option>
+      </select>
+    </div>
+
+    <!-- 11 -->
+    <div class="question" id="q11-wrap">
+      <label for="q11">11. We ____ the project.</label>
+      <select id="q11">
+        <option value="">— select —</option>
+        <option value="have completed">have completed</option>
+        <option value="completed">completed</option>
+        <option value="had completed">had completed</option>
+        <option value="completes">completes</option>
+      </select>
+    </div>
+
+    <!-- 12 -->
+    <div class="question" id="q12-wrap">
+      <label for="q12">12. The letter ____ yesterday.</label>
+      <select id="q12">
+        <option value="">— select —</option>
+        <option value="was posted">was posted</option>
+        <option value="posted">posted</option>
+        <option value="has been posted">has been posted</option>
+        <option value="is posted">is posted</option>
+      </select>
+    </div>
+
+    <!-- 13 -->
+    <div class="question" id="q13-wrap">
+      <label for="q13">13. Someone ____ the window last night.</label>
+      <select id="q13">
+        <option value="">— select —</option>
+        <option value="broke">broke</option>
+        <option value="has broken">has broken</option>
+        <option value="was broken">was broken</option>
+        <option value="broken">broken</option>
+      </select>
+    </div>
+
+    <!-- 14 -->
+    <div class="question" id="q14-wrap">
+      <label for="q14">14. I ____ Spanish at school.</label>
+      <select id="q14">
+        <option value="">— select —</option>
+        <option value="learnt">learnt</option>
+        <option value="learned">learned</option>
+        <option value="have learnt">have learnt</option>
+        <option value="learning">learning</option>
+      </select>
+    </div>
+
+    <!-- 15 -->
+    <div class="question" id="q15-wrap">
+      <label for="q15">15. He ____ his report yet.</label>
+      <select id="q15">
+        <option value="">— select —</option>
+        <option value="hasn't finished">hasn't finished</option>
+        <option value="didn't finish">didn't finish</option>
+        <option value="hadn't finished">hadn't finished</option>
+        <option value="hasn't finish">hasn't finish</option>
+      </select>
+    </div>
+
+    <!-- 16 -->
+    <div class="question" id="q16-wrap">
+      <label for="q16">16. She ____ a new car last month.</label>
+      <select id="q16">
+        <option value="">— select —</option>
+        <option value="bought">bought</option>
+        <option value="boughten">boughten</option>
+        <option value="has bought">has bought</option>
+        <option value="buys">buys</option>
+      </select>
+    </div>
+
+    <!-- 17 -->
+    <div class="question" id="q17-wrap">
+      <label for="q17">17. I ____ such a film before I moved here.</label>
+      <select id="q17">
+        <option value="">— select —</option>
+        <option value="hadn't seen">hadn't seen</option>
+        <option value="haven't seen">haven't seen</option>
+        <option value="didn't see">didn't see</option>
+        <option value="haven't saw">haven't saw</option>
+      </select>
+    </div>
+
+    <!-- 18 -->
+    <div class="question" id="q18-wrap">
+      <label for="q18">18. They ____ here since 2015.</label>
+      <select id="q18">
+        <option value="">— select —</option>
+        <option value="have lived">have lived</option>
+        <option value="has lived">has lived</option>
+        <option value="lived">lived</option>
+        <option value="have lives">have lives</option>
+      </select>
+    </div>
+
+    <!-- 19 -->
+    <div class="question" id="q19-wrap">
+      <label for="q19">19. The song ____ on the radio every day.</label>
+      <select id="q19">
+        <option value="">— select —</option>
+        <option value="is played">is played</option>
+        <option value="plays">plays</option>
+        <option value="was played">was played</option>
+        <option value="has been played">has been played</option>
+      </select>
+    </div>
+
+    <!-- 20 -->
+    <div class="question" id="q20-wrap">
+      <label for="q20">20. The driver ____ the passenger off safely.</label>
+      <select id="q20">
+        <option value="">— select —</option>
+        <option value="dropped">dropped</option>
+        <option value="was dropped">was dropped</option>
+        <option value="has dropped">has dropped</option>
+        <option value="drops">drops</option>
+      </select>
+    </div>
+
+    <!-- 21 -->
+    <div class="question" id="q21-wrap">
+      <label for="q21">21. He ____ the letter yesterday.</label>
+      <select id="q21">
+        <option value="">— select —</option>
+        <option value="wrote">wrote</option>
+        <option value="written">written</option>
+        <option value="has written">has written</option>
+        <option value="writes">writes</option>
+      </select>
+    </div>
+
+    <!-- 22 -->
+    <div class="question" id="q22-wrap">
+      <label for="q22">22. I ____ reading the book.</label>
+      <select id="q22">
+        <option value="">— select —</option>
+        <option value="have just finished">have just finished</option>
+        <option value="just finished">just finished</option>
+        <option value="had just finished">had just finished</option>
+        <option value="have just finish">have just finish</option>
+      </select>
+    </div>
+
+    <!-- 23 -->
+    <div class="question" id="q23-wrap">
+      <label for="q23">23. They ____ the meeting before noon.</label>
+      <select id="q23">
+        <option value="">— select —</option>
+        <option value="finished">finished</option>
+        <option value="have finished">have finished</option>
+        <option value="had finished">had finished</option>
+        <option value="finishes">finishes</option>
+      </select>
+    </div>
+
+    <!-- 24 -->
+    <div class="question" id="q24-wrap">
+      <label for="q24">24. The instructions ____ clearly.</label>
+      <select id="q24">
+        <option value="">— select —</option>
+        <option value="are explained">are explained</option>
+        <option value="were explained">were explained</option>
+        <option value="explain">explain</option>
+        <option value="have been explained">have been explained</option>
+      </select>
+    </div>
+
+    <!-- 25 -->
+    <div class="question" id="q25-wrap">
+      <label for="q25">25. He ____ his homework before dinner.</label>
+      <select id="q25">
+        <option value="">
