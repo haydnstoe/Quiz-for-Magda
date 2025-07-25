@@ -104,14 +104,14 @@
       <div class="hint"></div>
     </div>
 
-    <!-- … replicate up to q25 … -->
+    <!-- … replicate through q25 … -->
   </div>
 
   <button onclick="submitQuiz()">Submit Answers</button>
   <div id="result"></div>
 
   <script>
-    // 1) Answer key
+    // 1. Answer key
     const answers = {
       q1:  "walked",
       q2:  "went",
@@ -119,7 +119,7 @@
       q25: "have eaten"
     };
 
-    // 2) Fisher–Yates shuffle helper
+    // 2. Fisher–Yates shuffle helper
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -127,20 +127,22 @@
       }
     }
 
-    // 3) On load: shuffle options & wire up inline hints
+    // 3. Shuffle each select’s real options on page load
     document.addEventListener('DOMContentLoaded', () => {
       const total = Object.keys(answers).length;
 
       for (let i = 1; i <= total; i++) {
-        const sel      = document.getElementById('q' + i);
-        const opts     = Array.from(sel.querySelectorAll('option'));
-        const place    = opts.shift();       // remove placeholder
-        shuffle(opts);                        // shuffle real choices
-        sel.innerHTML = '';                   // clear old options
-        sel.appendChild(place);               // re-add placeholder
-        opts.forEach(o => sel.appendChild(o));// add shuffled ones
+        const sel   = document.getElementById('q' + i);
+        const opts  = Array.from(sel.querySelectorAll('option'));
+        const place = opts.shift();       // remove the “— select —”
+        shuffle(opts);                    // shuffle real choices
 
-        // wire inline-hint on change
+        // re-build the <select>
+        sel.innerHTML = '';
+        sel.appendChild(place);
+        opts.forEach(o => sel.appendChild(o));
+
+        // wire up inline hint on change
         sel.addEventListener('change', () => {
           const hintDiv = sel.parentElement.querySelector('.hint');
           if (!sel.value) {
@@ -148,8 +150,8 @@
             return;
           }
           if (sel.value !== answers[sel.id]) {
-            const first = answers[sel.id][0];
-            hintDiv.textContent = `Hint: starts with “${first}”`;
+            hintDiv.textContent =
+              `Hint: starts with “${answers[sel.id][0]}”`;
           } else {
             hintDiv.textContent = '';
           }
@@ -157,23 +159,23 @@
       }
     });
 
-    // 4) Submission: score, first-pos %, reveal keys
+    // 4. Submit, score, first-position %, reveal keys
     function submitQuiz() {
-      let score         = 0;
+      let score = 0;
       let firstPosCount = 0;
-      const total       = Object.keys(answers).length;
+      const total = Object.keys(answers).length;
 
       for (let i = 1; i <= total; i++) {
-        const qid    = 'q' + i;
-        const sel    = document.getElementById(qid);
-        const wrap   = document.getElementById(qid + '-wrap');
-        const fb     = wrap.querySelector('.feedback');
+        const id   = 'q' + i;
+        const sel  = document.getElementById(id);
+        const wrap = document.getElementById(id + '-wrap');
+        const fb   = wrap.querySelector('.feedback');
 
         wrap.classList.remove('correct','incorrect');
         fb.textContent = '';
 
-        // mark correctness
-        if (sel.value === answers[qid]) {
+        // mark right/wrong
+        if (sel.value === answers[id]) {
           wrap.classList.add('correct');
           fb.textContent = 'Correct!';
           score++;
@@ -182,19 +184,19 @@
           fb.textContent = 'Incorrect';
         }
 
-        // count first-position matches
-        if (answers[qid] === sel.options[1]?.value) {
+        // count if correct answer was in the first real choice
+        if (answers[id] === sel.options[1]?.value) {
           firstPosCount++;
         }
 
-        // reveal full answer key
+        // reveal the full answer
         let ak = wrap.querySelector('.answer-key');
         if (!ak) {
           ak = document.createElement('div');
           ak.className = 'answer-key';
           wrap.appendChild(ak);
         }
-        ak.textContent = `Answer: ${answers[qid]}`;
+        ak.textContent = `Answer: ${answers[id]}`;
 
         sel.disabled = true;
       }
