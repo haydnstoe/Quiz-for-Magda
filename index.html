@@ -1,213 +1,311 @@
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
-  <meta charset="UTF-8">
-  <title>Quiz for Magda</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-    }
-    h1 {
-      text-align: center;
-      color: #003366;
-      margin-bottom: 1rem;
-    }
-    .question {
-      margin-bottom: 1.5rem;
-    }
-    .feedback {
-      display: inline-block;
-      margin-left: 10px;
-      font-weight: bold;
-    }
-    .hint {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 4px;
-    }
-    .answer-key {
-      margin-top: 6px;
-      font-style: italic;
-      color: #333;
-    }
-    .correct .feedback,
-    .correct label {
-      color: green;
-    }
-    .incorrect .feedback,
-    .incorrect label {
-      color: red;
-    }
-    select.correct {
-      border: 2px solid green;
-    }
-    select.incorrect {
-      border: 2px solid red;
-    }
-    button {
-      display: block;
-      margin: 2rem auto;
-      padding: 0.6rem 1.2rem;
-      background: #003366;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #002244;
-    }
-    #result {
-      text-align: center;
-      font-size: 1.25rem;
-      margin-top: 1.5rem;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Quiz for Magda</h1>
-  <div id="quiz">
-    <!-- Question 1 -->
-    <div class="question" id="q1-wrap">
-      <label for="q1">1. She ____ to the shops yesterday.</label>
-      <select id="q1">
-        <option value="">— select —</option>
-        <option value="walked">walked</option>
-        <option value="has walked">has walked</option>
-        <option value="was walked">was walked</option>
-        <option value="walk">walk</option>
-      </select>
-      <span class="feedback"></span>
-      <div class="hint"></div>
-    </div>
-
-    <!-- Question 2 -->
-    <div class="question" id="q2-wrap">
-      <label for="q2">2. They ____ to the cinema last week.</label>
-      <select id="q2">
-        <option value="">— select —</option>
-        <option value="went">went</option>
-        <option value="have gone">have gone</option>
-        <option value="gone">gone</option>
-        <option value="go">go</option>
-      </select>
-      <span class="feedback"></span>
-      <div class="hint"></div>
-    </div>
-
-    <!-- … replicate through q25 … -->
+  <!-- Question 3 -->
+  <div class="question" id="q3-wrap">
+    <label for="q3">3. We ____ our homework already.</label>
+    <select id="q3">
+      <option value="">— select —</option>
+      <option value="did">did</option>
+      <option value="have done">have done</option>
+      <option value="have did">have did</option>
+      <option value="have been doing">have been doing</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
   </div>
 
-  <button onclick="submitQuiz()">Submit Answers</button>
-  <div id="result"></div>
+  <!-- Question 4 -->
+  <div class="question" id="q4-wrap">
+    <label for="q4">4. The letter ____ yesterday.</label>
+    <select id="q4">
+      <option value="">— select —</option>
+      <option value="was sent">was sent</option>
+      <option value="sent">sent</option>
+      <option value="is sent">is sent</option>
+      <option value="has sent">has sent</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-  <script>
-    // 1. Answer key
-    const answers = {
-      q1:  "walked",
-      q2:  "went",
-      // … through q25 …
-      q25: "have eaten"
-    };
+  <!-- Question 5 -->
+  <div class="question" id="q5-wrap">
+    <label for="q5">5. By the time we arrived, they ____ dinner.</label>
+    <select id="q5">
+      <option value="">— select —</option>
+      <option value="had finished">had finished</option>
+      <option value="have finished">have finished</option>
+      <option value="finished">finished</option>
+      <option value="were finishing">were finishing</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-    // 2. Fisher–Yates shuffle helper
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
+  <!-- Question 6 -->
+  <div class="question" id="q6-wrap">
+    <label for="q6">6. I ____ to Berlin twice.</label>
+    <select id="q6">
+      <option value="">— select —</option>
+      <option value="have been">have been</option>
+      <option value="have gone">have gone</option>
+      <option value="was">was</option>
+      <option value="been">been</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-    // 3. Shuffle each select’s real options on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      const total = Object.keys(answers).length;
+  <!-- Question 7 -->
+  <div class="question" id="q7-wrap">
+    <label for="q7">7. When she called, I ____ a shower.</label>
+    <select id="q7">
+      <option value="">— select —</option>
+      <option value="was taking">was taking</option>
+      <option value="have taken">have taken</option>
+      <option value="took">took</option>
+      <option value="had taken">had taken</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-      for (let i = 1; i <= total; i++) {
-        const sel   = document.getElementById('q' + i);
-        const opts  = Array.from(sel.querySelectorAll('option'));
-        const place = opts.shift();       // remove the “— select —”
-        shuffle(opts);                    // shuffle real choices
+  <!-- Question 8 -->
+  <div class="question" id="q8-wrap">
+    <label for="q8">8. The project ____ next week.</label>
+    <select id="q8">
+      <option value="">— select —</option>
+      <option value="will be completed">will be completed</option>
+      <option value="will complete">will complete</option>
+      <option value="is completed">is completed</option>
+      <option value="has completed">has completed</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        // re-build the <select>
-        sel.innerHTML = '';
-        sel.appendChild(place);
-        opts.forEach(o => sel.appendChild(o));
+  <!-- Question 9 -->
+  <div class="question" id="q9-wrap">
+    <label for="q9">9. He ____ tennis every weekend.</label>
+    <select id="q9">
+      <option value="">— select —</option>
+      <option value="plays">plays</option>
+      <option value="played">played</option>
+      <option value="has played">has played</option>
+      <option value="is playing">is playing</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        // wire up inline hint on change
-        sel.addEventListener('change', () => {
-          const hintDiv = sel.parentElement.querySelector('.hint');
-          if (!sel.value) {
-            hintDiv.textContent = '';
-            return;
-          }
-          if (sel.value !== answers[sel.id]) {
-            hintDiv.textContent =
-              `Hint: starts with “${answers[sel.id][0]}”`;
-          } else {
-            hintDiv.textContent = '';
-          }
-        });
-      }
-    });
+  <!-- Question 10 -->
+  <div class="question" id="q10-wrap">
+    <label for="q10">10. They ____ the report by Monday.</label>
+    <select id="q10">
+      <option value="">— select —</option>
+      <option value="will have submitted">will have submitted</option>
+      <option value="will submit">will submit</option>
+      <option value="have submitted">have submitted</option>
+      <option value="submitted">submitted</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-    // 4. Submit, score, first-position %, reveal keys
-    function submitQuiz() {
-      let score = 0;
-      let firstPosCount = 0;
-      const total = Object.keys(answers).length;
+  <!-- Question 11 -->
+  <div class="question" id="q11-wrap">
+    <label for="q11">11. The book ____ by thousands.</label>
+    <select id="q11">
+      <option value="">— select —</option>
+      <option value="is being read">is being read</option>
+      <option value="was being read">was being read</option>
+      <option value="has been read">has been read</option>
+      <option value="will be read">will be read</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-      for (let i = 1; i <= total; i++) {
-        const id   = 'q' + i;
-        const sel  = document.getElementById(id);
-        const wrap = document.getElementById(id + '-wrap');
-        const fb   = wrap.querySelector('.feedback');
+  <!-- Question 12 -->
+  <div class="question" id="q12-wrap">
+    <label for="q12">12. I ____ her since last year.</label>
+    <select id="q12">
+      <option value="">— select —</option>
+      <option value="have known">have known</option>
+      <option value="knew">knew</option>
+      <option value="know">know</option>
+      <option value="have been knowing">have been knowing</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        wrap.classList.remove('correct','incorrect');
-        fb.textContent = '';
+  <!-- Question 13 -->
+  <div class="question" id="q13-wrap">
+    <label for="q13">13. He ____ all the cookies before we got home.</label>
+    <select id="q13">
+      <option value="">— select —</option>
+      <option value="had eaten">had eaten</option>
+      <option value="has eaten">has eaten</option>
+      <option value="ate">ate</option>
+      <option value="was eating">was eating</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        // mark right/wrong
-        if (sel.value === answers[id]) {
-          wrap.classList.add('correct');
-          fb.textContent = 'Correct!';
-          score++;
-        } else {
-          wrap.classList.add('incorrect');
-          fb.textContent = 'Incorrect';
-        }
+  <!-- Question 14 -->
+  <div class="question" id="q14-wrap">
+    <label for="q14">14. By the end of this month, I ____ here for six years.</label>
+    <select id="q14">
+      <option value="">— select —</option>
+      <option value="will have been working">will have been working</option>
+      <option value="will have worked">will have worked</option>
+      <option value="have worked">have worked</option>
+      <option value="will work">will work</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        // count if correct answer was in the first real choice
-        if (answers[id] === sel.options[1]?.value) {
-          firstPosCount++;
-        }
+  <!-- Question 15 -->
+  <div class="question" id="q15-wrap">
+    <label for="q15">15. The window ____ last night.</label>
+    <select id="q15">
+      <option value="">— select —</option>
+      <option value="was broken">was broken</option>
+      <option value="broke">broke</option>
+      <option value="has broken">has broken</option>
+      <option value="is broken">is broken</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        // reveal the full answer
-        let ak = wrap.querySelector('.answer-key');
-        if (!ak) {
-          ak = document.createElement('div');
-          ak.className = 'answer-key';
-          wrap.appendChild(ak);
-        }
-        ak.textContent = `Answer: ${answers[id]}`;
+  <!-- Question 16 -->
+  <div class="question" id="q16-wrap">
+    <label for="q16">16. She ____ Paris three times by 2020.</label>
+    <select id="q16">
+      <option value="">— select —</option>
+      <option value="will have visited">will have visited</option>
+      <option value="will visit">will visit</option>
+      <option value="has visited">has visited</option>
+      <option value="visited">visited</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-        sel.disabled = true;
-      }
+  <!-- Question 17 -->
+  <div class="question" id="q17-wrap">
+    <label for="q17">17. They ____ since morning.</label>
+    <select id="q17">
+      <option value="">— select —</option>
+      <option value="have been waiting">have been waiting</option>
+      <option value="waited">waited</option>
+      <option value="are waiting">are waiting</option>
+      <option value="have waited">have waited</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-      const pct = ((firstPosCount / total) * 100).toFixed(1);
-      document.getElementById('result').innerHTML =
-        `You scored ${score} out of ${total}.<br>` +
-        `${firstPosCount} correct ${firstPosCount === 1 ? 'answer' : 'answers'} ` +
-        `(${pct}%) were the first choice.`;
-    }
-  </script>
+  <!-- Question 18 -->
+  <div class="question" id="q18-wrap">
+    <label for="q18">18. He ____ the car when I saw him.</label>
+    <select id="q18">
+      <option value="">— select —</option>
+      <option value="was washing">was washing</option>
+      <option value="washed">washed</option>
+      <option value="had washed">had washed</option>
+      <option value="is washing">is washing</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
 
-</body>
-</html>
+  <!-- Question 19 -->
+  <div class="question" id="q19-wrap">
+    <label for="q19">19. The meal ____ by 7 pm.</label>
+    <select id="q19">
+      <option value="">— select —</option>
+      <option value="will be served">will be served</option>
+      <option value="will serve">will serve</option>
+      <option value="is served">is served</option>
+      <option value="served">served</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
+
+  <!-- Question 20 -->
+  <div class="question" id="q20-wrap">
+    <label for="q20">20. I ____ my car keys this morning.</label>
+    <select id="q20">
+      <option value="">— select —</option>
+      <option value="have lost">have lost</option>
+      <option value="lost">lost</option>
+      <option value="have been lost">have been lost</option>
+      <option value="am losing">am losing</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
+
+  <!-- Question 21 -->
+  <div class="question" id="q21-wrap">
+    <label for="q21">21. The students ____ their exams by now.</label>
+    <select id="q21">
+      <option value="">— select —</option>
+      <option value="have been given">have been given</option>
+      <option value="are given">are given</option>
+      <option value="were giving">were giving</option>
+      <option value="gave">gave</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
+
+  <!-- Question 22 -->
+  <div class="question" id="q22-wrap">
+    <label for="q22">22. Her leg ____ last week.</label>
+    <select id="q22">
+      <option value="">— select —</option>
+      <option value="was broken">was broken</option>
+      <option value="broke">broke</option>
+      <option value="had been broken">had been broken</option>
+      <option value="has been broken">has been broken</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
+
+  <!-- Question 23 -->
+  <div class="question" id="q23-wrap">
+    <label for="q23">23. We ____ dinner when they arrived.</label>
+    <select id="q23">
+      <option value="">— select —</option>
+      <option value="had cooked">had cooked</option>
+      <option value="have cooked">have cooked</option>
+      <option value="cooked">cooked</option>
+      <option value="were cooking">were cooking</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
+
+  <!-- Question 24 -->
+  <div class="question" id="q24-wrap">
+    <label for="q24">24. By the time the movie started, we ____ our tickets.</label>
+    <select id="q24">
+      <option value="">— select —</option>
+      <option value="had bought">had bought</option>
+      <option value="bought">bought</option>
+      <option value="have bought">have bought</option>
+      <option value="had been buying">had been buying</option>
+    </select>
+    <span class="feedback"></span>
+    <div class="hint"></div>
+  </div>
+
+  <!-- Question 25 -->
+  <div class="question" id="q25-wrap">
+    <label for="q25">25. We ____ lunch
